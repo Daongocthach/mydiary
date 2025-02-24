@@ -10,13 +10,13 @@ import Animated, {
 
 import { ThemedText } from '@/components/ThemedText'
 
-export function HelloWave() {
+export function Firework() {
   const rotationAnimation = useSharedValue(0)
 
   useEffect(() => {
     rotationAnimation.value = withRepeat(
       withSequence(withTiming(25, { duration: 150 }), withTiming(0, { duration: 150 })),
-      4 // Run the animation 4 times
+      5
     )
   }, [])
 
@@ -26,15 +26,15 @@ export function HelloWave() {
 
   return (
     <Animated.View style={animatedStyle}>
-      <ThemedText style={styles.text}>👋</ThemedText>
+      <ThemedText style={styles.text}>🎊</ThemedText>
     </Animated.View>
   )
 }
 
 const styles = StyleSheet.create({
   text: {
-    fontSize: 28,
-    lineHeight: 32,
+    fontSize: 100,
+    lineHeight: 120,
     marginTop: -6,
   },
 })

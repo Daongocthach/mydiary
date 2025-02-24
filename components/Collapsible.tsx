@@ -1,45 +1,30 @@
-import { PropsWithChildren, useState } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { PropsWithChildren, useState } from 'react'
+import { StyleSheet, TouchableOpacity, Text, View } from 'react-native'
 
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
-import { Colors } from '@/constants/Colors';
-import { useColorScheme } from '@/hooks/useColorScheme';
+import { IconSymbol } from '@/components/ui/IconSymbol'
+import { useColorScheme } from '@/hooks/useColorScheme'
 
-export function Collapsible({ children, title }: PropsWithChildren & { title: string }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const theme = useColorScheme() ?? 'light';
+export function Collapsible({ children, title, isTrue }: PropsWithChildren & { title: string, isTrue?: boolean }) {
+  const [isOpen, setIsOpen] = useState(isTrue ? true :false)
+  const theme = useColorScheme() ?? 'light'
 
   return (
-    <ThemedView>
+    <View>
       <TouchableOpacity
         style={styles.heading}
         onPress={() => setIsOpen((value) => !value)}
         activeOpacity={0.8}>
-        <IconSymbol
-          name="chevron.right"
-          size={18}
-          weight="medium"
-          color={theme === 'light' ? Colors.light.icon : Colors.dark.icon}
-          style={{ transform: [{ rotate: isOpen ? '90deg' : '0deg' }] }}
-        />
-
-        <ThemedText type="defaultSemiBold">{title}</ThemedText>
+        <Text className='text-sky-600' style={{ fontSize: 15, fontWeight: 600, marginRight: 5 }}>- {title}</Text>
+        <IconSymbol name={isOpen ? 'chevron.up.2' : 'chevron.down.2'} size={20} color={'#0284c7'} />
       </TouchableOpacity>
-      {isOpen && <ThemedView style={styles.content}>{children}</ThemedView>}
-    </ThemedView>
-  );
+      {isOpen && <View>{children}</View>}
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
   heading: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
   },
-  content: {
-    marginTop: 6,
-    marginLeft: 24,
-  },
-});
+})
