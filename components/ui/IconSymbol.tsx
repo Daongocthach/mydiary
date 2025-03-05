@@ -59,6 +59,7 @@ const MAPPING = {
   'takeoutbag.and.cup.and.straw': 'ramen-dining',
   'book.fill': 'menu-book',
   'clock.fill': 'history',
+  'pencil.circle.fill': 'edit',
 } as Partial<
   Record<
     import('expo-symbols').SymbolViewProps['name'],

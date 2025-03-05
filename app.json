@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "mydiary",
+    "name": "Mydiary",
     "slug": "mydiary",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.pemeoh1.mydiary"
     },
     "web": {
       "bundler": "metro",
@@ -36,6 +37,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "2f94ad6a-b73e-47d5-ba04-f3594acb9d68"
+      }
     }
   }
 }
