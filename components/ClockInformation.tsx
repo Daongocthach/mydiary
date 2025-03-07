@@ -1,6 +1,7 @@
 import { IconSymbol } from '@/components/ui/IconSymbol'
 import { useState, useEffect } from 'react'
 import { Text, View } from 'react-native'
+import { Colors } from '@/constants/Colors';
 
 export function ClockInformation() {
     const [currentTime, setCurrentTime] = useState(new Date())
@@ -18,10 +19,10 @@ export function ClockInformation() {
     return (
         <View
             className='flex flex-row items-center justify-center text-slate-600 p-4 rounded-2xl'
-            style={{ backgroundColor: '#e2e8f0', borderRadius: 100 }}>
-            <IconSymbol name='clock.arrow.circlepath' size={20} color='#475569' />
-            <Text style={{ fontSize: 14, fontWeight: 500, color: '#475569', marginLeft: 10 }}>{formattedDate} - </Text>
-            <Text style={{ fontSize: 14, fontWeight: 500, color: '#475569' }}>{hours}:{minutes}:{seconds}</Text>
+            style={{ backgroundColor: Colors.light.primary, borderRadius: 100 }}>
+            <IconSymbol name='clock.arrow.circlepath' size={20} color='white' />
+            <Text style={{ fontSize: 14, fontWeight: 500, color: 'white', marginLeft: 10 }}>{formattedDate} - </Text>
+            <Text style={{ fontSize: 14, fontWeight: 500, color: 'white' }}>{hours}:{minutes}:{seconds}</Text>
         </View>
     )
 }

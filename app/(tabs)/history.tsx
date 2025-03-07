@@ -8,6 +8,7 @@ import useStore from '@/store';
 import { format } from 'date-fns';
 import { DiaryType } from '@/lib/types';
 import Toast from 'react-native-toast-message';
+import { Colors } from '@/constants/Colors';
 
 const groupByDate = (data: any[]) => {
   const grouped = data.reduce((acc, item) => {
@@ -36,7 +37,7 @@ export default function HistoryScreen() {
   const barData = weekDiaryCount.map((count, index) => ({
     value: 1,
     label: daysOfWeek[index],
-    frontColor: count > 0 ? '#177AD5' : '#D3D3D3',
+    frontColor: count > 0 ? Colors.light.primary : '#D3D3D3',
   }));
 
   const [expandedSections, setExpandedSections] = useState<{ [key: string]: boolean }>({});
@@ -99,12 +100,12 @@ export default function HistoryScreen() {
           renderSectionHeader={({ section: { title } }) => (
             <View className='flex flex-row justify-between items-center mt-4'>
               <TouchableOpacity onPress={() => toggleSection(title)} className='flex flex-row items-center gap-2'>
-                <IconSymbol name='circle.dotted.circle' size={15} color='#0284c7' />
-                <Text className='text-lg font-bold text-sky-600'>{`Ngày ${title}`}</Text>
-                <IconSymbol name={expandedSections[title] ? 'chevron.up.2' : 'chevron.down.2'} size={20} color='#0284c7' />
+                <IconSymbol name='circle.dotted.circle' size={15} color={Colors.light.primary} />
+                <Text className="text-lg font-bold text-violet-500">{`Ngày ${title}`}</Text>
+                <IconSymbol name={expandedSections[title] ? 'chevron.up.2' : 'chevron.down.2'} size={20} color={Colors.light.primary} />
               </TouchableOpacity>
               <TouchableOpacity onPress={() => { handleDeleteItem(title) }}>
-                <IconSymbol name='xmark.app.fill' size={20} color='#0284c7' />
+                <IconSymbol name='xmark.app.fill' size={20} color={Colors.light.primary} />
               </TouchableOpacity>
             </View>
           )}
@@ -114,7 +115,7 @@ export default function HistoryScreen() {
               <View className='flex flex-row justify-between items-center'>
                 <Text className='flex-1 p-6'>{item.content}</Text>
                 <TouchableOpacity onPress={() => { handleOpenModal(item) }}>
-                  <IconSymbol name='pencil.circle.fill' size={20} color='#0284c7' />
+                  <IconSymbol name='pencil.circle.fill' size={20} color={Colors.light.primary} />
                 </TouchableOpacity>
               </View>
             ) : null
@@ -127,7 +128,7 @@ export default function HistoryScreen() {
         handle={handleEditDiary}
       >
         <View>
-          <Text className='text-lg font-bold text-sky-600'>{`Ngày ${selectedDate}`}</Text>
+          <Text className="text-lg font-bold text-violet-500">{`Ngày ${selectedDate}`}</Text>
           <TextInput
             className='border p-4 my-2 h-96 w-72 border-gray-300 rounded-lg bg-gray-50 text-gray-700 text-xl'
             multiline

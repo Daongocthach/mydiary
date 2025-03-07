@@ -2,6 +2,7 @@ import { Alert, Image, TouchableOpacity } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { IconSymbol } from '@/components/ui/IconSymbol';
 import useStore from '@/store';
+import { HelloWave } from './HelloWave';
 
 export const CustomHeader = () => {
     const { clearData } = useStore();
@@ -17,12 +18,10 @@ export const CustomHeader = () => {
             <TouchableOpacity>
                 <Image
                     source={require('@/assets/images/logo-header.png')}
-                    style={{ width: 200, height: 100 }} resizeMode="contain"
+                    style={{ width: 250, height: 100 }} resizeMode="contain"
                 />
             </TouchableOpacity>
-            <TouchableOpacity onPress={handleClearData}>
-                <IconSymbol name='delete.left.fill' size={24} color={"#3b82f6"} />
-            </TouchableOpacity>
+            <HelloWave />
         </SafeAreaView>
     )
 }

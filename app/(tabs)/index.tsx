@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, ScrollView, useWindowDimensions } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, useWindowDimensions, KeyboardAvoidingView, ScrollView, } from 'react-native';
 import useStore from '@/store';
 import Toast from 'react-native-toast-message';
 import { format } from 'date-fns';
@@ -7,7 +7,7 @@ import { ClockInformation } from '@/components/ClockInformation';
 import { IconSymbol } from '@/components/ui/IconSymbol';
 
 const HomeScreen = () => {
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(true);
   const { todayDiary, historyDiary, setToDayDiary, setHistoryDiary } = useStore();
   const [content, setContent] = useState(todayDiary?.content || '');
   const windowHeight = useWindowDimensions().height;
@@ -59,12 +59,11 @@ const HomeScreen = () => {
             className='absolute right-2 top-7'
             onPress={() => setShowPassword(!showPassword)}
           >
-            <IconSymbol name={showPassword ? 'eye.fill' : 'eye.slash.fill'} size={25} color="#3b82f6" />
+            <IconSymbol name={showPassword ? 'eye.fill' : 'eye.slash.fill'} size={25} color="#8968CD" />
           </TouchableOpacity>
         </View>
-
         <TouchableOpacity
-          className='bg-blue-500 p-3 rounded-lg shadow-md w-full'
+          className='bg-[#8968CD] p-3 rounded-lg shadow-md w-full'
           onPress={handleSaveDiary}
         >
           <Text className='text-center text-white font-bold text-lg'>Lưu</Text>
